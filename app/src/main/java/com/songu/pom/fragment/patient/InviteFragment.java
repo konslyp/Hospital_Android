@@ -60,7 +60,7 @@ public class InviteFragment extends Fragment implements View.OnClickListener,ISe
     public void initView()
     {
         Globals.g_pendingInvite = null;
-        Globals.g_inviteList.clear();
+        Globals.g_inviteList1.clear();
         listHolders.clear();
         layoutContacts = (LinearLayout)mRootView.findViewById(R.id.layoutContacts);
         btnContact = (Button) mRootView.findViewById(R.id.btnInviteAddress);
@@ -221,7 +221,7 @@ public class InviteFragment extends Fragment implements View.OnClickListener,ISe
                 uModel.mLastName = strLastname;
                 //uModel.mPhone = strPhone;
                 uModel.mEmail = strEmail;
-                Globals.g_inviteList.add(uModel);
+                Globals.g_inviteList1.add(uModel);
             }
             else
             {
@@ -230,7 +230,7 @@ public class InviteFragment extends Fragment implements View.OnClickListener,ISe
                 return;
             }
         }
-        if (Globals.g_inviteList.size() > 0) {
+        if (Globals.g_inviteList1.size() > 0) {
             Globals.e_mode = Enums.MODE.PATIENT_SELECT_SERVICE;
             Globals.e_transDirection = Enums.SWIPDIRECTION.LEFT;
             ((MainActivity) getActivity()).setFragment();

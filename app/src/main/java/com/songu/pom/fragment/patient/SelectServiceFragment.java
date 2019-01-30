@@ -53,10 +53,10 @@ public class SelectServiceFragment extends Fragment implements View.OnClickListe
     public void initSelectAll()
     {
         for (int k = 0;k < Globals.g_inviteList.size();k++) {
-            Globals.g_inviteList.get(k).isSelectAll = true;
+            Globals.g_inviteList1.get(k).isSelectAll = true;
             for (int i = 1; i < Globals.gServices.length; i++) {
-                if (!Globals.g_inviteList.get(k).mServices.get(Globals.gServices[i]).isSelect)
-                    Globals.g_inviteList.get(k).isSelectAll = false;
+                if (!Globals.g_inviteList1.get(k).mServices.get(Globals.gServices[i]).isSelect)
+                    Globals.g_inviteList1.get(k).isSelectAll = false;
             }
         }
     }
@@ -65,7 +65,7 @@ public class SelectServiceFragment extends Fragment implements View.OnClickListe
         lstServices = new ArrayList<>();
         expServices = mRootView.findViewById(R.id.lvExpService);
         initSelectAll();
-        adapterInvite = new AdapterInviteExp(this.getContext(),Globals.g_inviteList);
+        adapterInvite = new AdapterInviteExp(this.getContext(),Globals.g_inviteList1);
         layoutNext = (LinearLayout) mRootView.findViewById(R.id.layout_select_service_next);
         layoutNext.setOnClickListener(this);
         expServices.setAdapter(adapterInvite);
@@ -83,24 +83,24 @@ public class SelectServiceFragment extends Fragment implements View.OnClickListe
             public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPosition, int childPosition, long id) {
                 if (childPosition == 0) // Click Select All
                 {
-                    Globals.g_inviteList.get(groupPosition).isSelectAll = !Globals.g_inviteList.get(groupPosition).isSelectAll;
+                    Globals.g_inviteList1.get(groupPosition).isSelectAll = !Globals.g_inviteList1.get(groupPosition).isSelectAll;
                     for (int i = 1;i < Globals.gServices.length;i++)
                     {
-                        ServiceModel service = Globals.g_inviteList.get(groupPosition).mServices.get(Globals.gServices[i]);
-                        service.isSelect = Globals.g_inviteList.get(groupPosition).isSelectAll;
-                        Globals.g_inviteList.get(groupPosition).mServices.put(Globals.gServices[i],service);
+                        ServiceModel service = Globals.g_inviteList1.get(groupPosition).mServices.get(Globals.gServices[i]);
+                        service.isSelect = Globals.g_inviteList1.get(groupPosition).isSelectAll;
+                        Globals.g_inviteList1.get(groupPosition).mServices.put(Globals.gServices[i],service);
                     }
                 }
                 else
                 {
                     ServiceModel service  = Globals.g_inviteList.get(groupPosition).mServices.get(Globals.gServices[childPosition]);
                     service.isSelect = !service.isSelect;
-                    Globals.g_inviteList.get(groupPosition).mServices.put(Globals.gServices[childPosition],service);
-                    Globals.g_inviteList.get(groupPosition).isSelectAll = true;
+                    Globals.g_inviteList1.get(groupPosition).mServices.put(Globals.gServices[childPosition],service);
+                    Globals.g_inviteList1.get(groupPosition).isSelectAll = true;
                     for (int i = 1;i < Globals.gServices.length;i++)
                     {
-                        if (!Globals.g_inviteList.get(groupPosition).mServices.get(Globals.gServices[i]).isSelect)
-                            Globals.g_inviteList.get(groupPosition).isSelectAll = false;
+                        if (!Globals.g_inviteList1.get(groupPosition).mServices.get(Globals.gServices[i]).isSelect)
+                            Globals.g_inviteList1.get(groupPosition).isSelectAll = false;
                     }
                 }
                 //Check Select All Item
@@ -117,16 +117,16 @@ public class SelectServiceFragment extends Fragment implements View.OnClickListe
 
     public void actionDone()
     {
-        if (Globals.g_inviteList.size() == 0)
+        if (Globals.g_inviteList1.size() == 0)
         {
             onResponse(200);
             return;
         }
         String inviteJson = "";
         JSONArray inviteArray = new JSONArray();
-        for (int i = 0; i < Globals.g_inviteList.size();i++)
+        for (int i = 0; i < Globals.g_inviteList1.size();i++)
         {
-            inviteArray.put(Globals.g_inviteList.get(i).toJsonMember());
+            inviteArray.put(Globals.g_inviteList1.get(i).toJsonMember());
 
         }
         inviteJson = inviteArray.toString();

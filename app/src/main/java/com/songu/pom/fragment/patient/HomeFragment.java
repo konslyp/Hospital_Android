@@ -61,7 +61,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener,IServ
         switch (view.getId())
         {
             case R.id.btnInviteMember:
-                Globals.g_inviteList.clear();
+                Globals.g_inviteList1.clear();
                 Globals.e_mode = Enums.MODE.PATIENT_INVITE;
                 Globals.e_transDirection = Enums.SWIPDIRECTION.LEFT;
                 ((MainActivity) getActivity()).setFragment();
@@ -70,6 +70,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener,IServ
 //                startActivityForResult(contactPickerIntent, RESULT_PICK_CONTACT);
                 break;
             case R.id.btnSecuritySetting:
+                Globals.g_inviteList1 = Globals.g_inviteList;
                 Globals.e_mode = Enums.MODE.PATIENT_CHANGE_SERVICE;
                 Globals.e_transDirection = Enums.SWIPDIRECTION.LEFT;
                 ((MainActivity) getActivity()).setFragment();

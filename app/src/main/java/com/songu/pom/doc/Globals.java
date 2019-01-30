@@ -21,6 +21,7 @@ public class Globals {
     public static Enums.SWIPDIRECTION e_transDirection = Enums.SWIPDIRECTION.LEFT;
     public static String g_fcmToken = "";
     public static List<UserModel> g_inviteList = new ArrayList<>();
+    public static List<UserModel> g_inviteList1 = new ArrayList<>();
     public static List<UserModel> g_inviteMemberList = new ArrayList<>();
     public static UserModel g_pendingInvite = new UserModel();
     public static String[] gServices = {"Select All","Patient Status (Bed, in OR, Recovering)","Orders (Labs, Imaging, Consultation)","Observations (Pre and Post Operation)","Documents/Notes (Physician Notes)"};
